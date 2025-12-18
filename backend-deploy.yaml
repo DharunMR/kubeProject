@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: backendapp
+  labels:
+    app: backendapp
+
+spec:
+  replica: 2
+
+  selector:
+    matchLabels:
+      app: backendapp
+
+  template:
+    metadata:
+      labels:
+        app: backendapp
+
+    spec:
+      containers:
+      - name: backendapp
+        image: dharun0406/movie-backend
+        imagePullPolicy: Always
+
+        ports:
+        - name: backendapp-port
+          containerPort: 8080
+
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: backend-secrets
+              key: MONGODB_URI
+
+      initContainers:
+      - name: init-mydb
+        image: busybox
+        args: ['-c', 'until nslookup moviedb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;']

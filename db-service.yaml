@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: moviedb-service
+spec:
+  clusterIP: None
+  selector:
+    app: moviedb
+  ports:
+    - port: 27017
+      targetPort: moviedb-port

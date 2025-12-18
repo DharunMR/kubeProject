@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontendapp
+  labels:
+    app: frontendapp
+
+spec:
+  replicas: 2
+  
+  selector:
+    matchLabels:
+      app: frontendapp
+
+  template:
+    metadata:
+      labels:
+        app: frontendapp
+
+    spec:
+      containers:
+      - name: frontendapp
+        image: dharun0406/movie-frontend
+        imagePullPolicy: Always
+
+      ports:
+      - name: frontendapp-port
+        contaiinerPort: 80

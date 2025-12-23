@@ -25,4 +25,4 @@ spec:
 
       ports:
       - name: frontendapp-port
-        contaiinerPort: 80
+        containerPort: 80

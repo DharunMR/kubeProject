@@ -50,7 +50,7 @@ spec:
     
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: gp3
+      storageClassName: manual
       resources:
         requests:
           storage: 10Gi

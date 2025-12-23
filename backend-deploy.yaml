@@ -27,12 +27,9 @@ spec:
         - name: backendapp-port
           containerPort: 8080
 
-        env:
-        - name: MONGODB_URI
-          valueFrom:
-            secretKeyRef:
-              name: backend-secret
-              key: MONGODB_URI
+        envFrom:
+        - secretRef:
+            name: backend-secret
 
       initContainers:
       - name: moviedb

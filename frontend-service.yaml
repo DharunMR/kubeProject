@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontendapp-service
+  name: frontendservice
 
 spec:
   selector:
@@ -9,4 +9,4 @@ spec:
   
   ports:
   - port: 80
-    targetPort: frontendapp-port
+    targetPort: frontend-port

@@ -23,6 +23,6 @@ spec:
         image: dharun0406/movie-frontend
         imagePullPolicy: Always
 
-      ports:
-      - name: frontendapp-port
-        containerPort: 80
+        ports:
+        - name: frontendapp-port
+          containerPort: 80

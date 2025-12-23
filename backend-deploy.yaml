@@ -27,10 +27,6 @@ spec:
         - name: backendapp-port
           containerPort: 8080
 
-        envFrom:
-        - secretRef:
-            name: backend-secret
-
       initContainers:
       - name: moviedb
         image: busybox

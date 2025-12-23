@@ -37,4 +37,10 @@ spec:
       initContainers:
       - name: moviedb
         image: busybox
-        args: ['-c', 'until nslookup moviedb-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
+        command: ["sh", "-c"]
+        args:
+          - |
+            until nslookup moviedb-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do
+              echo "waiting for MongoDB service";
+              sleep 2;
+            done;

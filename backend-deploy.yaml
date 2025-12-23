@@ -35,6 +35,6 @@ spec:
               key: MONGODB_URI
 
       initContainers:
-      - name: init-mydb
+      - name: moviedb
         image: busybox
         args: ['-c', 'until nslookup moviedb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
